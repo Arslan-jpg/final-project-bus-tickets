@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="597.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ScheduleControl">
+   <children>
+      <SplitPane dividerPositions="0.33532934131736525" prefHeight="597.0" prefWidth="837.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="474.0" prefWidth="226.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="12.0" text="Odabir linije:" />
+                  <TableView fx:id="tblLines" layoutX="7.0" layoutY="37.0" onMouseClicked="#lineTableSelect" prefHeight="170.0" prefWidth="264.0">
+                    <columns>
+                      <TableColumn fx:id="colLineId" prefWidth="32.0" text="BR." />
+                      <TableColumn fx:id="colCityStart" prefWidth="87.0" text="POLAZIŠTE" />
+                        <TableColumn fx:id="colCityEnd" text="ODREDIŠTE" />
+                        <TableColumn fx:id="colThrough" prefWidth="64.0" text="KROZ" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="19.0" layoutY="220.0" text="Polazak:" />
+                  <Spinner fx:id="spnStartHour" editable="true" layoutX="86.0" layoutY="216.0" prefHeight="25.0" prefWidth="60.0" />
+                  <Spinner fx:id="spnStartMinute" editable="true" layoutX="178.0" layoutY="216.0" prefHeight="25.0" prefWidth="60.0" />
+                  <Spinner fx:id="spnReturnHour" disable="true" editable="true" layoutX="86.0" layoutY="250.0" prefHeight="25.0" prefWidth="60.0" />
+                  <Spinner fx:id="spnReturnMinute" disable="true" editable="true" layoutX="178.0" layoutY="250.0" prefHeight="25.0" prefWidth="60.0" />
+                  <CheckBox fx:id="chkReturn" layoutX="6.0" layoutY="254.0" mnemonicParsing="false" onMouseClicked="#returnCheck" text="Povratak:" />
+                  <CheckBox fx:id="chkMon" layoutX="7.0" layoutY="332.0" mnemonicParsing="false" text="Pon" />
+                  <CheckBox fx:id="chkTue" layoutX="65.0" layoutY="332.0" mnemonicParsing="false" text="Uto" />
+                  <CheckBox fx:id="chkWed" layoutX="120.0" layoutY="332.0" mnemonicParsing="false" text="Sri" />
+                  <CheckBox fx:id="chkThu" layoutX="172.0" layoutY="332.0" mnemonicParsing="false" text="Čet" />
+                  <CheckBox fx:id="chkFri" layoutX="226.0" layoutY="331.0" mnemonicParsing="false" text="Pet" />
+                  <CheckBox fx:id="chkSat" layoutX="65.0" layoutY="359.0" mnemonicParsing="false" text="Sub" />
+                  <CheckBox fx:id="chkSun" layoutX="117.0" layoutY="359.0" mnemonicParsing="false" text="Ned" />
+                  <CheckBox fx:id="chkHol" layoutX="172.0" layoutY="359.0" mnemonicParsing="false" text="Praznik" />
+                  <Label layoutX="151.0" layoutY="220.0" text="h  :" />
+                  <Label layoutX="243.0" layoutY="220.0" text="m" />
+                  <Label layoutX="151.0" layoutY="254.0" text="h  :" />
+                  <Label layoutX="243.0" layoutY="254.0" text="m" />
+                  <Button fx:id="btnScheduleInsert" layoutX="41.0" layoutY="428.0" mnemonicParsing="false" onAction="#insertSchedule" prefHeight="25.0" prefWidth="196.0" text="UNOS" />
+                  <Separator layoutX="-32.0" layoutY="465.0" prefHeight="5.0" prefWidth="321.0" />
+                  <TextField fx:id="txtSelectedS" layoutX="119.0" layoutY="511.0" prefHeight="25.0" prefWidth="57.0" />
+                  <Label layoutX="21.0" layoutY="515.0" text="Odabrana stavka:" />
+                  <Button fx:id="btnDelete" layoutX="191.0" layoutY="511.0" mnemonicParsing="false" onAction="#scheduleDelete" prefHeight="25.0" prefWidth="76.0" text="BRIŠI" />
+                  <Button fx:id="btnBack" layoutX="41.0" layoutY="559.0" mnemonicParsing="false" onAction="#scheduleBackButton" prefHeight="25.0" prefWidth="196.0" text="NAZAD" />
+                  <TextField fx:id="txtSelectedLine" layoutX="91.0" layoutY="8.0" prefHeight="25.0" prefWidth="51.0" />
+                  <CheckBox fx:id="chkAll" layoutX="86.0" layoutY="404.0" mnemonicParsing="false" onMouseClicked="#allClicked" text="SVE" />
+                  <CheckBox fx:id="chkWorkDays" layoutX="150.0" layoutY="405.0" mnemonicParsing="false" onMouseClicked="#workClicked" text="RADNI" />
+                  <Label layoutX="11.0" layoutY="289.0" text="Prijevoznik:" />
+                  <ComboBox fx:id="cbCompany" layoutX="84.0" layoutY="285.0" onAction="#getCompanyId" prefHeight="25.0" prefWidth="173.0" />
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tblSchedule" onMouseClicked="#scheduleTableSelect" prefHeight="595.0" prefWidth="553.0">
+                    <columns>
+                      <TableColumn fx:id="colId" prefWidth="42.0" text="ID" />
+                      <TableColumn fx:id="colLine" prefWidth="39.0" text="LINE" />
+                        <TableColumn fx:id="colStart" prefWidth="67.0" text="POLAZAK" />
+                        <TableColumn fx:id="colReturn" prefWidth="69.0" text="POVRATAK" />
+                        <TableColumn fx:id="colCompany" prefWidth="77.0" text="PRIJEVOZNIK" />
+                        <TableColumn fx:id="colMon" prefWidth="27.0" text="P" />
+                        <TableColumn fx:id="colTue" prefWidth="27.0" text="U" />
+                        <TableColumn fx:id="colWed" prefWidth="27.0" text="S" />
+                        <TableColumn fx:id="colThu" prefWidth="27.0" text="Č" />
+                        <TableColumn fx:id="colFri" prefWidth="27.0" text="P" />
+						<TableColumn fx:id="colSat" prefWidth="27.0" text="S" />
+                        <TableColumn fx:id="colSun" prefWidth="27.0" text="N" />
+                        <TableColumn fx:id="colHol" prefWidth="68.0" text="PRAZNIK" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

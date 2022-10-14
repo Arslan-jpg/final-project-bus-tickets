@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="335.0" prefWidth="473.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DateControl">
+   <children>
+      <SplitPane dividerPositions="0.4574468085106383" prefHeight="335.0" prefWidth="472.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <DatePicker fx:id="dtpDate" layoutX="19.0" layoutY="10.0" />
+                  <Label fx:id="lblCheck" layoutY="40.0" prefHeight="38.0" prefWidth="212.0" text="Odaberite datum za provjeru" textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="btnDateCreate" disable="true" layoutX="19.0" layoutY="118.0" mnemonicParsing="false" onAction="#dateAddClicked" prefHeight="25.0" prefWidth="174.0" text="KREIRAJ VOŽNJE" />
+                  <Button fx:id="btnBack" layoutX="19.0" layoutY="294.0" mnemonicParsing="false" onAction="#dateBackButton" prefHeight="25.0" prefWidth="174.0" text="NAZAD" />
+                  <Button fx:id="btnCheck" layoutX="19.0" layoutY="86.0" mnemonicParsing="false" onAction="#checkClicked" prefHeight="25.0" prefWidth="174.0" text="PROVJERA" />
+                  <Button fx:id="btnDateDelete" disable="true" layoutX="19.0" layoutY="150.0" mnemonicParsing="false" onAction="#dateDeleteClicked" prefHeight="25.0" prefWidth="174.0" text="IZBRIŠI VOŽNJE" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="330.0" prefWidth="434.0">
+               <children>
+                  <TableView fx:id="tblDateS" prefHeight="335.0" prefWidth="252.0">
+                    <columns>
+                      <TableColumn fx:id="colRide" prefWidth="73.0" text="ID VOŽNJE" />
+                      <TableColumn fx:id="colSchedule" prefWidth="63.0" text="ID RASP." />
+                        <TableColumn fx:id="colDate" prefWidth="115.0" text="DATUM" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
